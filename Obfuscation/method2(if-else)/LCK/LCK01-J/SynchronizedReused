@@ -1,0 +1,18 @@
+////LCK01-J. Do not synchronize on objects that may be reused
+
+package locking;
+
+public class SynchronizedReused {
+	private final Boolean initialized = Boolean.FALSE;
+	private int flag = 0;
+	private void doSomething() {
+		if(flag==0){
+			synchronized (initialized) {
+			}		
+		}
+		else{
+			synchronized (initialized) {
+			}	
+		}
+	}
+}
